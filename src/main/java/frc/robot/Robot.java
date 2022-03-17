@@ -11,9 +11,12 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.BallDump;
-//import frc.robot.subsystems.Bob;
+import frc.robot.subsystems.Johnathan;
 import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -24,24 +27,36 @@ import edu.wpi.first.wpilibj.Joystick;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   private final Joystick m_stick = new Joystick(0);
-  private final XboxController n_Controller = new XboxController(0);
+  private final XboxController n_Controller = new XboxController(1);
   public static DriveTrain m_driveTrain = new DriveTrain();
   public static BallDump m_balldump = new BallDump();
+  public final Johnathan m_johnathan = new Johnathan();
   // public final XboxController n_XboxController = new driveWithXboxController();
   private RobotContainer m_robotContainer;
-
+  UsbCamera camera1;
+  UsbCamera camera2;
+  NetworkTableEntry cameraSelection;
+  
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
    */
   @Override
-  public void robotInit() {
+  public void robotInit() { 
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
-    UsbCamera camera = CameraServer.startAutomaticCapture(0);
-    camera.setResolution(320, 240);
-    camera.setFPS(15);
+    camera1 = CameraServer.startAutomaticCapture(0);
+    camera2 = CameraServer.startAutomaticCapture(1);
+
+    cameraSelection = NetworkTableInstance.getDefault().getTable("").getEntry("CameraSelection");
+    camera1.setResolution(320, 240);
+    camera1.setFPS(15);
+    camera2.setResolution(320, 240);
+    camera2.setFPS(15);
+    
+
+   
   }
   
   /**
@@ -98,6 +113,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     m_driveTrain.driveWithJoystick(m_stick);
     m_balldump.moveBallDump(m_stick);
+    m_johnathan.controlwxbox(n_Controller);
     CommandScheduler.getInstance().run();
   }
   
