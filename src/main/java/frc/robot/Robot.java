@@ -99,8 +99,6 @@ public class Robot extends TimedRobot {
     m_driveTrain.driveWithJoystick(m_stick);
     m_balldump.moveBallDump(m_stick);
     CommandScheduler.getInstance().run();
-//Xbox Controller Stuff
-   m_driveTrain.xboxControlPneumatics(n_Controller);
   }
   
   @Override

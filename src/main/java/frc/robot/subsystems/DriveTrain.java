@@ -35,10 +35,6 @@ public class DriveTrain extends SubsystemBase {
     m_right.setInverted(true);
   }
 
-public void xboxControlPneumatics(XboxController xboxController) {
-  //Xbox definition?
-}
-
   public void driveWithJoystick(Joystick joystick) {
     double throttle = -joystick.getThrottle();
     if (throttle < 0.5) {
