@@ -7,6 +7,7 @@ import static edu.wpi.first.wpilibj.DoubleSolenoid.Value.*;
 public class Johnathan extends SubsystemBase{
     DoubleSolenoid exampleDoublePCM = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 6, 7);
 
+
     public Johnathan(){
         
     }
@@ -14,8 +15,21 @@ public class Johnathan extends SubsystemBase{
 // A Button - lock johnathan
 // B Button - release johnathan
     public void controlxbox(XboxController xboxControl) {
+
         if (xboxControl.getAButton()) { 
-            exampleDoublePCM.set(DoubleSolenoid.Value.kReverse);
+            long targettime = System.currentTimeMillis() +  1000;
+            while(System.currentTimeMillis() < targettime) {
+                // we want to check that the button is held down;
+                if(!xboxControl.getAButton()) {
+                    // if button gets released, break out of loop early
+                    break;
+                }
+            }
+
+            if (System.currentTimeMillis() >= targettime ) {
+                // Only after it's held down for 1 second, do call set forward (open)
+                exampleDoublePCM.set(DoubleSolenoid.Value.kForward);
+            }
         }
         else if (xboxControl.getBButton()) {
             exampleDoublePCM.set(DoubleSolenoid.Value.kReverse);
@@ -24,4 +38,12 @@ public class Johnathan extends SubsystemBase{
             exampleDoublePCM.set(DoubleSolenoid.Value.kOff);
         }
     } 
+    long time = System.currentTimeMillis();
+    
+    long time2 = System.currentTimeMillis();
 }
+    // Safety feature John won't open unless button held (1 seconds)
+
+
+
+
