@@ -15,10 +15,13 @@ public class Johnathan extends SubsystemBase{
 // B Button - release johnathan
     public void controlxbox(XboxController xboxControl) {
         if (xboxControl.getAButton()) { 
-            exampleDoublePCM.set(kForward);
+            exampleDoublePCM.set(DoubleSolenoid.Value.kReverse);
         }
         else if (xboxControl.getBButton()) {
-            exampleDoublePCM.set(kReverse);
+            exampleDoublePCM.set(DoubleSolenoid.Value.kReverse);
         }
-    }
+        else{
+            exampleDoublePCM.set(DoubleSolenoid.Value.kOff);
+        }
+    } 
 }

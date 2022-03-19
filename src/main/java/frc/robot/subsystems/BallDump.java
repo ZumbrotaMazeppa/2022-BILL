@@ -38,7 +38,7 @@ public class BallDump extends SubsystemBase {
                 ballDumpMotor.set(0);
             } else {
                 // We are going up but top limit is not tripped so go at normal speed
-                ballDumpMotor.set(0.5);
+                ballDumpMotor.set(0.25);
             }
         }
 
@@ -48,7 +48,7 @@ public class BallDump extends SubsystemBase {
                 ballDumpMotor.set(0);
             } else {
                 // We are going up but top limit is not tripped so go at normal speed
-                ballDumpMotor.set(-0.5);
+                ballDumpMotor.set(-0.25);
             }
         }
 
@@ -61,13 +61,13 @@ public class BallDump extends SubsystemBase {
         boolean stopBucketDown = joystick.getRawButtonReleased(3);
 
         if (moveBucketUp) {
-            ballDumpMotor.set(0.5);
+            ballDumpMotor.set(0.25);
         } else if(stopBucketUp) {
             ballDumpMotor.set(0.0);
         }
 
         if (moveBucketDown) {
-            ballDumpMotor.set(-0.5);
+            ballDumpMotor.set(-0.25);
         } else if(stopBucketDown) {
             ballDumpMotor.set(0.0);
         }
