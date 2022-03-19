@@ -42,6 +42,14 @@ public class DriveTrain extends SubsystemBase {
     } else {
         m_drive.arcadeDrive(joystick.getY(), joystick.getTwist() * 0.65);
     }
+  }
+  public void driveWithAuton() {
+    m_drive.arcadeDrive(-0.25, 0);
+    
+
+  }
+  public void stop() {
+    m_drive.arcadeDrive(0, 0);
 }
 }
 

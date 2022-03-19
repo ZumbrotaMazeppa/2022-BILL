@@ -34,8 +34,6 @@ public class Robot extends TimedRobot {
   public final Johnathan m_johnathan = new Johnathan();
   public final Bob m_bBob = new Bob();
   
-  // public final XboxController n_XboxController = new driveWithXboxController();
-  private RobotContainer m_robotContainer;
   UsbCamera camera1;
   UsbCamera camera2;
   NetworkTableEntry cameraSelection;
@@ -46,9 +44,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() { 
-    // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
-    // autonomous chooser on the dashboard.
-    m_robotContainer = new RobotContainer();
+
     camera1 = CameraServer.startAutomaticCapture(0);
     camera2 = CameraServer.startAutomaticCapture(1);
 
@@ -57,9 +53,6 @@ public class Robot extends TimedRobot {
     camera1.setFPS(15);
     camera2.setResolution(320, 240);
     camera2.setFPS(15);
-    
-
-   
   }
   
   /**
@@ -88,12 +81,8 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-
-    // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.schedule();
-    }
+    //Move Backwards 
+    m_driveTrain.driveWithAuton();
   }
 
   /** This function is called periodically during autonomous. */
@@ -102,13 +91,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    // This makes sure that the autonomous stops running when
-    // teleop starts running. If you want the autonomous to
-    // continue until interrupted by another command, remove
-    // this line or comment it out.
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
-    }
+    // Stop moving
+  m_driveTrain.stop();
   }
 
   /** This function is called periodically during operator control. */
