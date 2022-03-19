@@ -27,10 +27,10 @@ public class BallDump extends SubsystemBase {
     public void moveBallDump(Joystick joystick) {
 
         // One button will go to one limit switch (6)
-        boolean moveBucketAllTheWayUp = joystick.getRawButton(6);
+        boolean moveBucketAllTheWayUp = joystick.getRawButton(3);
 
         // One button will go to other limit switch (4)
-        boolean moveBucketAllTheWayDown = joystick.getRawButton(4);
+        boolean moveBucketAllTheWayDown = joystick.getRawButton(1);
 
         if(moveBucketAllTheWayUp) {
             if (toplimitSwitch.get()) {
@@ -52,13 +52,13 @@ public class BallDump extends SubsystemBase {
             }
         }
 
-        // One button to move up while pushed down (5)
-        boolean moveBucketUp = joystick.getRawButtonPressed(5);
-        boolean stopBucketUp = joystick.getRawButtonReleased(5);
+        // One button to move up while pushed down (6)
+        boolean moveBucketUp = joystick.getRawButtonPressed(6);
+        boolean stopBucketUp = joystick.getRawButtonReleased(6);
 
-        // One button to move down while pushed down (3)
-        boolean moveBucketDown = joystick.getRawButtonPressed(3);
-        boolean stopBucketDown = joystick.getRawButtonReleased(3);
+        // One button to move down while pushed down (4)
+        boolean moveBucketDown = joystick.getRawButtonPressed(4);
+        boolean stopBucketDown = joystick.getRawButtonReleased(4);
 
         if (moveBucketUp) {
             ballDumpMotor.set(0.25);
