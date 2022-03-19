@@ -6,24 +6,22 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import static edu.wpi.first.wpilibj.DoubleSolenoid.Value.*;
 public class Johnathan extends SubsystemBase{
-    DoubleSolenoid exampleDoublePCM = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 7, 6);
+    DoubleSolenoid exampleDoublePCM = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 6, 7);
 
     public Johnathan(){
         
     }
 
-// Right trigger - lock johnathan
-// Right bumper - release johnathan
-// final JoystickButton r2 = new JoystickButton(xboxControl, 10);
-// final JoystickButton r1 = new JoystickButton(xboxControl, 12);
-public void controlwxbox(XboxController xboxControl) {
-    final JoystickButton r1 = new JoystickButton(xboxControl, 12);
-    final JoystickButton r2 = new JoystickButton(xboxControl, 10);
-    if (r2.get() ){ 
+
+
+// A Button - lock johnathan
+// B Button - release johnathan
+public void controlxbox(XboxController xboxControl) {
+    if (xboxControl.getAButton()) { 
         exampleDoublePCM.set(kForward);
-        }
-     if (r1.get() ){ 
-        exampleDoublePCM.set(kReverse);
-        }
     }
+    else if (xboxControl.getBButton()) {
+        exampleDoublePCM.set(kReverse);
+    }
+}
 }

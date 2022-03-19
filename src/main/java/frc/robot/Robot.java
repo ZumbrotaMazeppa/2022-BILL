@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.BallDump;
+import frc.robot.subsystems.Bob;
 import frc.robot.subsystems.Johnathan;
 import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.Joystick;
@@ -27,10 +28,12 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   private final Joystick m_stick = new Joystick(0);
-  private final XboxController n_Controller = new XboxController(1);
+  private final XboxController n_Controller = new XboxController(0);
   public static DriveTrain m_driveTrain = new DriveTrain();
   public static BallDump m_balldump = new BallDump();
   public final Johnathan m_johnathan = new Johnathan();
+  public final Bob m_bBob = new Bob();
+  
   // public final XboxController n_XboxController = new driveWithXboxController();
   private RobotContainer m_robotContainer;
   UsbCamera camera1;
@@ -113,7 +116,8 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     m_driveTrain.driveWithJoystick(m_stick);
     m_balldump.moveBallDump(m_stick);
-    m_johnathan.controlwxbox(n_Controller);
+    m_johnathan.controlxbox(n_Controller);
+    m_bBob.xboxControlPneumatics(n_Controller);
     CommandScheduler.getInstance().run();
   }
   
