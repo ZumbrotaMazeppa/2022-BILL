@@ -3,11 +3,8 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-//import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import static edu.wpi.first.wpilibj.DoubleSolenoid.Value.*;
-//import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 public class Bob extends SubsystemBase{
     DoubleSolenoid verticalSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0, 1); 
     DoubleSolenoid tipSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 4, 5); 
@@ -16,15 +13,7 @@ public class Bob extends SubsystemBase{
 
     }
 
-// Left trigger - move Bob clockwise
-// Left bumper - move bob counter clockwise
-// A - Extend Bob up
-// B - Retract bob
-// start to turn on back to stop compressor 
-
- 
- 
-public void xboxControlPneumatics(XboxController xboxControl) 
+    public void xboxControlPneumatics(XboxController xboxControl) 
     {
             
         if(xboxControl.getRightBumper()==true)
