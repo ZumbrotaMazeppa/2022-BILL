@@ -6,7 +6,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.Joystick;
 // import edu.wpi.first.wpilibj.XboxController;
@@ -16,12 +16,12 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 public class DriveTrain extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
   
-  WPI_TalonSRX m_rearRight = new WPI_TalonSRX(2);
-    WPI_TalonSRX m_frontRight = new WPI_TalonSRX(1);
+  WPI_VictorSPX m_rearRight = new WPI_VictorSPX(1);
+    WPI_VictorSPX m_frontRight = new WPI_VictorSPX(2);
     MotorControllerGroup m_right = new MotorControllerGroup(m_frontRight, m_rearRight);
 
-    WPI_TalonSRX m_rearLeft = new WPI_TalonSRX(4);
-    WPI_TalonSRX m_frontLeft = new WPI_TalonSRX(3);
+    WPI_VictorSPX m_rearLeft = new WPI_VictorSPX(3);
+    WPI_VictorSPX m_frontLeft = new WPI_VictorSPX(4);
     MotorControllerGroup m_left = new MotorControllerGroup(m_frontLeft, m_rearLeft);
 
     DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
@@ -38,19 +38,20 @@ public class DriveTrain extends SubsystemBase {
   public void driveWithJoystick(Joystick joystick) {
     double throttle = -joystick.getThrottle();
     if (throttle < 0.5) {
-        m_drive.arcadeDrive(joystick.getY() * 0.65, joystick.getTwist() * 0.5);
+        m_drive.arcadeDrive(joystick.getY() * 0.25, joystick.getTwist() * 0.25);
     } else {
-        m_drive.arcadeDrive(joystick.getY(), joystick.getTwist() * 0.65);
+        m_drive.arcadeDrive(joystick.getY() * 0.5, joystick.getTwist() * 0.5);
     }
   }
-  public void driveWithAuton() {
-    m_drive.arcadeDrive(-0.25, 0);
-    
-
+  public void driveWithAuton(double speed, long drivetime) {
+   m_drive.arcadeDrive(speed, 0);
+   long targettime = System.currentTimeMillis() +  drivetime;
+   while(System.currentTimeMillis() < targettime);
+    m_drive.arcadeDrive(0, 0);
   }
   public void stop() {
     m_drive.arcadeDrive(0, 0);
-}
+  }
 }
 
   

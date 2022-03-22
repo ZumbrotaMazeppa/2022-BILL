@@ -34,6 +34,7 @@ public class Johnathan extends SubsystemBase{
         else if (xboxControl.getBButton()) {
             exampleDoublePCM.set(DoubleSolenoid.Value.kReverse);
         }
+        
         else{
             exampleDoublePCM.set(DoubleSolenoid.Value.kOff);
         }
