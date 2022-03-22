@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import static edu.wpi.first.wpilibj.DoubleSolenoid.Value.*;
 //import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 public class Bob extends SubsystemBase{
-    DoubleSolenoid verticalSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0, 1); 
-    DoubleSolenoid tipSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 4, 5); 
+    DoubleSolenoid verticalSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 6, 7); 
+    DoubleSolenoid tipSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0, 1); 
 
     public Bob(){
 

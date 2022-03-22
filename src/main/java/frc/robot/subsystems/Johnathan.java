@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import static edu.wpi.first.wpilibj.DoubleSolenoid.Value.*;
 public class Johnathan extends SubsystemBase{
-    DoubleSolenoid exampleDoublePCM = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 6, 7);
+    DoubleSolenoid exampleDoublePCM = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 4,5);
 
 
     public Johnathan(){
@@ -28,11 +28,11 @@ public class Johnathan extends SubsystemBase{
 
             if (System.currentTimeMillis() >= targettime ) {
                 // Only after it's held down for 1 second, do call set forward (open)
-                exampleDoublePCM.set(DoubleSolenoid.Value.kForward);
+                exampleDoublePCM.set(DoubleSolenoid.Value.kReverse);
             }
         }
         else if (xboxControl.getBButton()) {
-            exampleDoublePCM.set(DoubleSolenoid.Value.kReverse);
+            exampleDoublePCM.set(DoubleSolenoid.Value.kForward);
         }
         
         else{

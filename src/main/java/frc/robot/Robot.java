@@ -28,7 +28,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 public class Robot extends TimedRobot {
   //private Command m_autonomousCommand;
   private final Joystick m_stick = new Joystick(0);
-  private final XboxController n_Controller = new XboxController(0);
+  private final XboxController n_Controller = new XboxController(1);
   public static DriveTrain m_driveTrain = new DriveTrain();
   public static BallDump m_balldump = new BallDump();
   public final Johnathan m_johnathan = new Johnathan();
@@ -82,7 +82,8 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     //Move Backwards 
-    m_driveTrain.driveWithAuton(0.25, 500L);
+    //m_driveTrain.driveWithAuton(0.25, 500);
+    //m_driveTrain.driveWithAuton(-0.25, 3000);
   }
 
   /** This function is called periodically during autonomous. */
