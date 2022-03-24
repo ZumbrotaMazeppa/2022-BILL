@@ -48,6 +48,10 @@ public class DriveTrain extends SubsystemBase {
    long targettime = System.currentTimeMillis() +  drivetime;
    while(System.currentTimeMillis() < targettime);
    m_drive.arcadeDrive(0, 0);
+  
+   m_drive.arcadeDrive(speed, 0);
+   long hittime = System.currentTimeMillis() +  drivetime;
+   while(System.currentTimeMillis() < hittime);
   }
   public void stop() {
     m_drive.arcadeDrive(0, 0);

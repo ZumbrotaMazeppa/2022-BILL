@@ -82,8 +82,9 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     //Move Backwards 
-    //m_driveTrain.driveWithAuton(0.25, 500);
-    //m_driveTrain.driveWithAuton(-0.25, 3000);
+    m_driveTrain.driveWithAuton(0.25, 500);
+    m_driveTrain.driveWithAuton(-0.25, 3000);
+    
   }
 
   /** This function is called periodically during autonomous. */
