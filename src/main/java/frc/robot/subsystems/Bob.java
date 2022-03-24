@@ -20,7 +20,8 @@ public class Bob extends SubsystemBase{
 // A - Extend Bob up
 // B - Retract bob
 // start to turn on back to stop compressor 
-
+// 6, 7 extend bob 
+// 0, 1 tilt bob 
  
  
 public void xboxControlPneumatics(XboxController xboxControl)
