@@ -16,11 +16,11 @@ public class Johnathan extends SubsystemBase{
 // B Button - release johnathan
     public void controlxbox(XboxController xboxControl) {
 
-        if (xboxControl.getAButton()) { 
+        if (xboxControl.getBButton()) { 
             long targettime = System.currentTimeMillis() +  1000;
             while(System.currentTimeMillis() < targettime) {
                 // we want to check that the button is held down;
-                if(!xboxControl.getAButton()) {
+                if(!xboxControl.getXButton()) {
                     // if button gets released, break out of loop early
                     break;
                 }
@@ -28,11 +28,11 @@ public class Johnathan extends SubsystemBase{
 
             if (System.currentTimeMillis() >= targettime ) {
                 // Only after it's held down for 1 second, do call set forward (open)
-                exampleDoublePCM.set(DoubleSolenoid.Value.kReverse);
+                exampleDoublePCM.set(DoubleSolenoid.Value.kForward);
             }
         }
-        else if (xboxControl.getBButton()) {
-            exampleDoublePCM.set(DoubleSolenoid.Value.kForward);
+        else if (xboxControl.getXButton()) {
+            exampleDoublePCM.set(DoubleSolenoid.Value.kReverse);
         }
         
         else{

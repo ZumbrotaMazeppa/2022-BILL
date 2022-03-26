@@ -38,9 +38,9 @@ public class DriveTrain extends SubsystemBase {
   public void driveWithJoystick(Joystick joystick) {
     double throttle = -joystick.getThrottle();
     if (throttle < 0.5) {
-        m_drive.arcadeDrive(-joystick.getY() * 0.25, joystick.getTwist() * 0.25);
-    } else {
         m_drive.arcadeDrive(-joystick.getY() * 0.5, joystick.getTwist() * 0.5);
+    } else {
+        m_drive.arcadeDrive(-joystick.getY() * 0.65, joystick.getTwist() * 0.65);
     }
   }
   public void driveWithAuton(double speed, long drivetime) {
@@ -53,6 +53,7 @@ public class DriveTrain extends SubsystemBase {
    long hittime = System.currentTimeMillis() +  drivetime;
    while(System.currentTimeMillis() < hittime);
   }
+
   public void stop() {
     m_drive.arcadeDrive(0, 0);
   }

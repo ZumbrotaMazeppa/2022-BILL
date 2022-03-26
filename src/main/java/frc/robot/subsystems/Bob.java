@@ -25,11 +25,11 @@ public void xboxControlPneumatics(XboxController xboxControl)
             
         if(xboxControl.getRightBumper()==true)
         {
-            verticalSolenoid.set(DoubleSolenoid.Value.kForward);
+            verticalSolenoid.set(DoubleSolenoid.Value.kReverse);
         }
         else if(xboxControl.getRightTriggerAxis()==1)
         {
-            verticalSolenoid.set(DoubleSolenoid.Value.kReverse);
+            verticalSolenoid.set(DoubleSolenoid.Value.kForward);
         }
         else
         {
@@ -38,11 +38,11 @@ public void xboxControlPneumatics(XboxController xboxControl)
 
         if(xboxControl.getLeftBumper()==true)
         {
-            tipSolenoid.set(DoubleSolenoid.Value.kForward);
+            tipSolenoid.set(DoubleSolenoid.Value.kReverse);
         }
         else if(xboxControl.getLeftTriggerAxis()==1)
         {
-            tipSolenoid.set(DoubleSolenoid.Value.kReverse);
+            tipSolenoid.set(DoubleSolenoid.Value.kForward);
         }
         else
         {
