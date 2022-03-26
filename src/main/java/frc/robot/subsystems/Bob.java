@@ -14,13 +14,10 @@ public class Bob extends SubsystemBase{
     public Bob(){
 
     }
-// A - Extend Bob up
-// B - Retract bob
 // 6, 7 extend bob 
 // 0, 1 tilt bob 
  
- 
-public void xboxControlPneumatics(XboxController xboxControl)
+    public void xboxControlPneumatics(XboxController xboxControl)
     {
             
         if(xboxControl.getRightBumper()==true)

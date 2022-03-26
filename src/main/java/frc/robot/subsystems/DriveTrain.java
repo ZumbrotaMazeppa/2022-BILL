@@ -27,7 +27,6 @@ public class DriveTrain extends SubsystemBase {
     DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
   
   public DriveTrain() {
-
     m_frontLeft.configFactoryDefault();
     m_frontRight.configFactoryDefault();
     m_rearLeft.configFactoryDefault();
@@ -44,14 +43,14 @@ public class DriveTrain extends SubsystemBase {
     }
   }
   public void driveWithAuton(double speed, long drivetime) {
-   m_drive.arcadeDrive(speed, 0);
-   long targettime = System.currentTimeMillis() +  drivetime;
-   while(System.currentTimeMillis() < targettime);
-   m_drive.arcadeDrive(0, 0);
-  
-   m_drive.arcadeDrive(speed, 0);
-   long hittime = System.currentTimeMillis() +  drivetime;
-   while(System.currentTimeMillis() < hittime);
+    m_drive.arcadeDrive(speed, 0);
+    long targettime = System.currentTimeMillis() +  drivetime;
+    while(System.currentTimeMillis() < targettime);
+    m_drive.arcadeDrive(0, 0);
+
+    m_drive.arcadeDrive(speed, 0);
+    long hittime = System.currentTimeMillis() +  drivetime;
+    while(System.currentTimeMillis() < hittime);
   }
 
   public void stop() {

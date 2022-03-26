@@ -5,12 +5,12 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 //import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.DigitalInput;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 public class BallDump extends SubsystemBase {
 
     // motor controller
-    WPI_TalonSRX ballDumpMotor = new WPI_TalonSRX(1);
+    WPI_VictorSPX ballDumpMotor = new WPI_VictorSPX(5);
 
 
     // Need two limit switches

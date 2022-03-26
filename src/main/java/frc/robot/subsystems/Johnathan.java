@@ -12,8 +12,9 @@ public class Johnathan extends SubsystemBase{
         
     }
 
-// A Button - lock johnathan
+// X Button - lock johnathan
 // B Button - release johnathan
+// Safety feature: Don't open John unless button held for 1 second
     public void controlxbox(XboxController xboxControl) {
 
         if (xboxControl.getBButton()) { 
@@ -39,11 +40,8 @@ public class Johnathan extends SubsystemBase{
             exampleDoublePCM.set(DoubleSolenoid.Value.kOff);
         }
     } 
-    long time = System.currentTimeMillis();
-    
-    long time2 = System.currentTimeMillis();
 }
-    // Safety feature John won't open unless button held (1 seconds)
+    
 
 
 
