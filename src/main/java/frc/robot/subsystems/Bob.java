@@ -5,15 +5,23 @@ import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 public class Bob extends SubsystemBase{
     DoubleSolenoid verticalSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 6, 7); 
     DoubleSolenoid tipSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0, 1); 
-
+    DoubleSolenoid brakeSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 2, 3); 
     public Bob(){
-
+        
     }
+
+    public void startPosition() {
+        verticalSolenoid.set(Value.kReverse);
+        tipSolenoid.set(Value.kReverse);
+        brakeSolenoid.set(Value.kReverse);
+    }
+
 // 6, 7 extend bob 
 // 0, 1 tilt bob 
  

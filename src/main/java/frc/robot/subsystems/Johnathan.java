@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
@@ -9,9 +10,13 @@ public class Johnathan extends SubsystemBase{
 
 
     public Johnathan(){
-        
+       
     }
 
+    public void startPosition() {
+        exampleDoublePCM.set(Value.kForward);
+    }
+    
 // X Button - lock johnathan
 // B Button - release johnathan
 // Safety feature: Don't open John unless button held for 1 second
