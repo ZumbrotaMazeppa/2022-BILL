@@ -2,6 +2,8 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+import com.ctre.phoenix.ErrorCode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 public class BallDump extends SubsystemBase {
@@ -11,7 +13,12 @@ public class BallDump extends SubsystemBase {
 
 
     public BallDump() {
-        ballDumpMotor.configFactoryDefault();
+        ErrorCode ec = ballDumpMotor.configFactoryDefault();
+        if (ec != ErrorCode.OK) {
+            System.out.println("Error resetting motor controller to factory default " + ec.toString());
+        } else {
+            System.out.println("BallDump mode: " + ballDumpMotor.getControlMode().toString());
+        }
     }
 
     // Map movement to a button

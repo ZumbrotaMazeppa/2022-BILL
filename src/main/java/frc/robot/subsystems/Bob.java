@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 public class Bob extends SubsystemBase{
     DoubleSolenoid verticalSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 6, 7); 
     DoubleSolenoid tipSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0, 1); 
-    DoubleSolenoid brakeSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 2, 3); 
+    //DoubleSolenoid brakeSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 2, 3); 
 
     public Bob(){
         
@@ -20,7 +20,7 @@ public class Bob extends SubsystemBase{
     public void startPosition() {
         verticalSolenoid.set(Value.kReverse);
         tipSolenoid.set(Value.kReverse);
-        brakeSolenoid.set(Value.kReverse);
+        //brakeSolenoid.set(Value.kReverse);
     }
 
 // 6, 7 extend bob 
@@ -29,7 +29,7 @@ public class Bob extends SubsystemBase{
     public void xboxControlPneumatics(XboxController xboxControl)
     {
         
-        if(xboxControl.getRightBumper()==true)
+        if(xboxControl.getRightBumper())
         {
             verticalSolenoid.set(DoubleSolenoid.Value.kReverse);
         }
@@ -37,20 +37,20 @@ public class Bob extends SubsystemBase{
         {
             verticalSolenoid.set(DoubleSolenoid.Value.kForward);
             // Set brakeSolenoid to forward while the trigger is being pressed
-            brakeSolenoid.set(DoubleSolenoid.Value.kForward);
+            /*brakeSolenoid.set(DoubleSolenoid.Value.kReverse);
             while(xboxControl.getRightTriggerAxis()==1) {
 
             }
             // Set brakeSolenoid to reverse when the trigger is let go
-            brakeSolenoid.set(DoubleSolenoid.Value.kReverse);
+            brakeSolenoid.set(DoubleSolenoid.Value.kForward);*/
         }
         else
         {
-            brakeSolenoid.set(DoubleSolenoid.Value.kOff);
+            //brakeSolenoid.set(DoubleSolenoid.Value.kOff);
             verticalSolenoid.set(DoubleSolenoid.Value.kOff);
         }
 
-        if(xboxControl.getLeftBumper()==true)
+        if(xboxControl.getLeftBumper())
         {
             tipSolenoid.set(DoubleSolenoid.Value.kReverse);
         }
