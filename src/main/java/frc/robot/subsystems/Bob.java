@@ -12,6 +12,7 @@ public class Bob extends SubsystemBase{
     DoubleSolenoid verticalSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 6, 7); 
     DoubleSolenoid tipSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0, 1); 
     DoubleSolenoid brakeSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 2, 3); 
+
     public Bob(){
         
     }
@@ -27,7 +28,7 @@ public class Bob extends SubsystemBase{
  
     public void xboxControlPneumatics(XboxController xboxControl)
     {
-            
+        
         if(xboxControl.getRightBumper()==true)
         {
             verticalSolenoid.set(DoubleSolenoid.Value.kReverse);
@@ -35,9 +36,17 @@ public class Bob extends SubsystemBase{
         else if(xboxControl.getRightTriggerAxis()==1)
         {
             verticalSolenoid.set(DoubleSolenoid.Value.kForward);
+            // Set brakeSolenoid to forward while the trigger is being pressed
+            brakeSolenoid.set(DoubleSolenoid.Value.kForward);
+            while(xboxControl.getRightTriggerAxis()==1) {
+
+            }
+            // Set brakeSolenoid to reverse when the trigger is let go
+            brakeSolenoid.set(DoubleSolenoid.Value.kReverse);
         }
         else
         {
+            brakeSolenoid.set(DoubleSolenoid.Value.kOff);
             verticalSolenoid.set(DoubleSolenoid.Value.kOff);
         }
 

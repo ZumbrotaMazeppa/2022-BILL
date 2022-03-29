@@ -19,24 +19,15 @@ public class BallDump extends SubsystemBase {
       // Need 3 position (one limit, the other limit, some point between)
     public void moveBallDump(Joystick joystick) {
 
-
-        // One button to move up while pushed down (6)
-        boolean moveBucketUp = joystick.getRawButtonPressed(6);
-        boolean stopBucketUp = joystick.getRawButtonReleased(6);
-
-        // One button to move down while pushed down (4)
-        boolean moveBucketDown = joystick.getRawButtonPressed(4);
-        boolean stopBucketDown = joystick.getRawButtonReleased(4);
-
-        if (moveBucketUp) {
-            ballDumpMotor.set(0.25);
-        } else if(stopBucketUp) {
+        if (joystick.getRawButton(4)) {
+            ballDumpMotor.set(-0.25);
+        } else {
             ballDumpMotor.set(0.0);
         }
 
-        if (moveBucketDown) {
+        if (joystick.getRawButton(3)) {
             ballDumpMotor.set(-0.25);
-        } else if(stopBucketDown) {
+        } else {
             ballDumpMotor.set(0.0);
         }
     }

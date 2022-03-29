@@ -27,11 +27,12 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 public class Robot extends TimedRobot {
   //private Command m_autonomousCommand;
   private final Joystick m_stick = new Joystick(0);
-  private final XboxController n_Controller = new XboxController(1);
-  public static DriveTrain m_driveTrain = new DriveTrain();
+  //private final XboxController n_Controller = new XboxController(1);
+
+  //public static DriveTrain m_driveTrain = new DriveTrain();
   public static BallDump m_balldump = new BallDump();
-  public final Johnathan m_johnathan = new Johnathan();
-  public final Bob m_bBob = new Bob();
+  //public final Johnathan m_johnathan = new Johnathan();
+  //public final Bob m_bBob = new Bob();
   
   UsbCamera camera1;
   UsbCamera camera2;
@@ -52,6 +53,10 @@ public class Robot extends TimedRobot {
     camera1.setFPS(15);
     camera2.setResolution(320, 240);
     camera2.setFPS(15);
+
+    // Get solenoids in starting position
+    //m_johnathan.startPosition();
+    //m_bBob.startPosition();
   }
   
   /**
@@ -81,8 +86,8 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     //Move Backwards 
-    m_driveTrain.driveWithAuton(0.25, 500);
-    m_driveTrain.driveWithAuton(-0.25, 3000);
+    //m_driveTrain.driveWithAuton(0.25, 500);
+    //m_driveTrain.driveWithAuton(-0.25, 3000);
     
   }
 
@@ -93,16 +98,16 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     // Stop moving
-    m_driveTrain.stop();
+    //m_driveTrain.stop();
   }
 
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    m_driveTrain.driveWithJoystick(m_stick);
+    //m_driveTrain.driveWithJoystick(m_stick);
     m_balldump.moveBallDump(m_stick);
-    m_johnathan.controlxbox(n_Controller);
-    m_bBob.xboxControlPneumatics(n_Controller);
+    //m_johnathan.controlxbox(n_Controller);
+    //m_bBob.xboxControlPneumatics(n_Controller);
     CommandScheduler.getInstance().run();
   }
   
