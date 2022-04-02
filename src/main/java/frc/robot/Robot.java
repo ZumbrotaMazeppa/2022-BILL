@@ -85,12 +85,17 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
-     m_driveTrain.driveWithAuton(-0.5, 500);
+    
+    m_driveTrain.driveWithAuton(-0.5, 500);
     m_driveTrain.stop();
-    try {
+    //open ball mech
+    
+      m_balldump.autonBallDump(true, 1000);
+
+    /*try {
       Thread.sleep(1000);
     } catch (Exception e) {
-    }
+    }*/
    
     m_driveTrain.driveWithAuton(0.5, 250);
     m_driveTrain.stop();
@@ -101,9 +106,12 @@ public class Robot extends TimedRobot {
       Thread.sleep(4000);
     } catch (Exception e) {
     }
-
-    m_driveTrain.driveWithAuton(0.5, 3500);
     
+    m_driveTrain.driveWithAuton(0.5, 500);
+    //close ball mech
+    m_balldump.autonBallDump(false, 1000);
+    
+    m_driveTrain.driveWithAuton(0.5, 3000);
   }
 
   /** This function is called periodically during autonomous. */
@@ -113,13 +121,13 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     // Stop moving
-    //m_driveTrain.stop();
+    m_driveTrain.stop();
   }
 
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    //m_driveTrain.driveWithJoystick(m_stick);
+    m_driveTrain.driveWithJoystick(m_stick);
     m_balldump.moveBallDump(m_stick);
     m_johnathan.controlxbox(n_Controller);
     m_bBob.xboxControlPneumatics(n_Controller);

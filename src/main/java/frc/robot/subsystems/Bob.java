@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 public class Bob extends SubsystemBase{
     DoubleSolenoid verticalSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 6, 7); 
     DoubleSolenoid tipSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0, 1);  
-    WPI_VictorSPX m_Winch = new WPI_VictorSPX(6);
+    WPI_VictorSPX m_Winch = new WPI_VictorSPX(5);
 
     public Bob(){
         
@@ -44,18 +44,18 @@ public class Bob extends SubsystemBase{
             m_Winch.set(0);
         }
         else if (xboxControl.getRightTriggerAxis()==0 && !xboxControl.getRightBumper()){
-            m_Winch.set(0);
+            m_Winch.set(0.05);
             verticalSolenoid.set(DoubleSolenoid.Value.kForward);
         }
         
         while (xboxControl.getRightTriggerAxis()==1){
             verticalSolenoid.set(DoubleSolenoid.Value.kForward);
-            m_Winch.set (-0.6);
+            m_Winch.set (-0.9);
         }
 
         while (xboxControl.getRightBumper()){
             verticalSolenoid.set(DoubleSolenoid.Value.kReverse);
-            m_Winch.set(0.5);
+            m_Winch.set(0.9);
         }
 
         if(xboxControl.getLeftBumper())
