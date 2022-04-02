@@ -28,12 +28,8 @@ public class BallDump extends SubsystemBase {
 
         if (joystick.getRawButton(4)) {
             ballDumpMotor.set(-0.25);
-        } else {
-            ballDumpMotor.set(0.0);
-        }
-
-        if (joystick.getRawButton(3)) {
-            ballDumpMotor.set(-0.25);
+        } else if (joystick.getRawButton(3)) {
+            ballDumpMotor.set(0.25);
         } else {
             ballDumpMotor.set(0.0);
         }

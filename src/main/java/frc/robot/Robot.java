@@ -29,8 +29,8 @@ public class Robot extends TimedRobot {
   private final Joystick m_stick = new Joystick(0);
   private final XboxController n_Controller = new XboxController(1);
 
-  public final DriveTrain m_driveTrain = new DriveTrain();
-  //public final BallDump m_balldump = new BallDump();
+  //public final DriveTrain m_driveTrain = new DriveTrain();
+  public final BallDump m_balldump = new BallDump();
   public final Johnathan m_johnathan = new Johnathan();
   public final Bob m_bBob = new Bob();
   
@@ -86,11 +86,11 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     //Move Backwards 
-    m_driveTrain.driveWithAuton(-0.5, 500);
+    //m_driveTrain.driveWithAuton(-0.5, 500);
     //FIXME add ball dump
-    m_driveTrain.stop();
+    //m_driveTrain.stop();
     //Thread.sleep(500);
-    m_driveTrain.driveWithAuton(0.5, 4000);
+    //m_driveTrain.driveWithAuton(0.5, 3500);
     
   }
 
@@ -101,14 +101,14 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     // Stop moving
-    m_driveTrain.stop();
+    //m_driveTrain.stop();
   }
 
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    m_driveTrain.driveWithJoystick(m_stick);
-    //m_balldump.moveBallDump(m_stick);
+    //m_driveTrain.driveWithJoystick(m_stick);
+    m_balldump.moveBallDump(m_stick);
     m_johnathan.controlxbox(n_Controller);
     m_bBob.xboxControlPneumatics(n_Controller);
     CommandScheduler.getInstance().run();
