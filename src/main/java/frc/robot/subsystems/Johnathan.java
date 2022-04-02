@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 public class Johnathan extends SubsystemBase{
     DoubleSolenoid exampleDoublePCM = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 4,5);
 
-
     public Johnathan(){
        
     }

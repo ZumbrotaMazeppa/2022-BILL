@@ -45,12 +45,14 @@ public class DriveTrain extends SubsystemBase {
   public void driveWithAuton(double speed, long drivetime) {
     m_drive.arcadeDrive(speed, 0);
     long targettime = System.currentTimeMillis() +  drivetime;
-    while(System.currentTimeMillis() < targettime);
+    while(System.currentTimeMillis() < targettime) {
+      m_drive.arcadeDrive(speed, 0);
+    }
     m_drive.arcadeDrive(0, 0);
 
-    m_drive.arcadeDrive(speed, 0);
+    /*m_drive.arcadeDrive(speed, 0);
     long hittime = System.currentTimeMillis() +  drivetime;
-    while(System.currentTimeMillis() < hittime);
+    while(System.currentTimeMillis() < hittime);*/
   }
 
   public void stop() {

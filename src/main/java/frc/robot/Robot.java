@@ -86,8 +86,11 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     //Move Backwards 
-    //m_driveTrain.driveWithAuton(0.25, 500);
-    //m_driveTrain.driveWithAuton(-0.25, 3000);
+    m_driveTrain.driveWithAuton(-0.5, 500);
+    //FIXME add ball dump
+    m_driveTrain.stop();
+    //Thread.sleep(500);
+    m_driveTrain.driveWithAuton(0.5, 4000);
     
   }
 
@@ -98,7 +101,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     // Stop moving
-    //m_driveTrain.stop();
+    m_driveTrain.stop();
   }
 
   /** This function is called periodically during operator control. */
