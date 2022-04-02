@@ -29,7 +29,7 @@ public class Robot extends TimedRobot {
   private final Joystick m_stick = new Joystick(0);
   private final XboxController n_Controller = new XboxController(1);
 
-  //public final DriveTrain m_driveTrain = new DriveTrain();
+  public final DriveTrain m_driveTrain = new DriveTrain();
   public final BallDump m_balldump = new BallDump();
   public final Johnathan m_johnathan = new Johnathan();
   public final Bob m_bBob = new Bob();
@@ -85,12 +85,24 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
-    //Move Backwards 
-    //m_driveTrain.driveWithAuton(-0.5, 500);
-    //FIXME add ball dump
-    //m_driveTrain.stop();
-    //Thread.sleep(500);
-    //m_driveTrain.driveWithAuton(0.5, 3500);
+     m_driveTrain.driveWithAuton(-0.5, 500);
+    m_driveTrain.stop();
+    try {
+      Thread.sleep(1000);
+    } catch (Exception e) {
+    }
+   
+    m_driveTrain.driveWithAuton(0.5, 250);
+    m_driveTrain.stop();
+    m_driveTrain.driveWithAuton(-0.5, 250);
+
+    m_driveTrain.stop();
+    try {
+      Thread.sleep(4000);
+    } catch (Exception e) {
+    }
+
+    m_driveTrain.driveWithAuton(0.5, 3500);
     
   }
 
