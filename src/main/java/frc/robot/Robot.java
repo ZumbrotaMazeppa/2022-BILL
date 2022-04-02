@@ -86,7 +86,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     
-    m_driveTrain.driveWithAuton(-0.5, 500);
+    m_driveTrain.driveWithAuton(-0.5, 750);
     m_driveTrain.stop();
     //open ball mech
     
