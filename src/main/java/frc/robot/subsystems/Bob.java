@@ -44,18 +44,18 @@ public class Bob extends SubsystemBase{
             m_Winch.set(0);
         }
         else if (xboxControl.getRightTriggerAxis()==0 && !xboxControl.getRightBumper()){
-            m_Winch.set(0.05);
+            m_Winch.set(0.01);
             verticalSolenoid.set(DoubleSolenoid.Value.kForward);
         }
         
         while (xboxControl.getRightTriggerAxis()==1){
             verticalSolenoid.set(DoubleSolenoid.Value.kForward);
-            m_Winch.set (-0.9);
+            m_Winch.set (-0.6);
         }
 
         while (xboxControl.getRightBumper()){
             verticalSolenoid.set(DoubleSolenoid.Value.kReverse);
-            m_Winch.set(0.9);
+            m_Winch.set(0.6);
         }
 
         if(xboxControl.getLeftBumper())
