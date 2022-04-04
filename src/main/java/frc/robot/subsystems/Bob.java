@@ -44,7 +44,7 @@ public class Bob extends SubsystemBase{
             m_Winch.set(0);
         }
         else if (xboxControl.getRightTriggerAxis()==0 && !xboxControl.getRightBumper()){
-            m_Winch.set(0.01);
+            m_Winch.set(0.02);
             verticalSolenoid.set(DoubleSolenoid.Value.kForward);
         }
         
@@ -55,6 +55,10 @@ public class Bob extends SubsystemBase{
 
         while (xboxControl.getRightBumper()){
             verticalSolenoid.set(DoubleSolenoid.Value.kReverse);
+            try {
+                Thread.sleep(200);
+              } catch (Exception e) {
+              }
             m_Winch.set(0.6);
         }
 
