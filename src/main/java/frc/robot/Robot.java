@@ -111,7 +111,7 @@ public class Robot extends TimedRobot {
     //close ball mech
     m_balldump.autonBallDump(false, 1000);
     
-    m_driveTrain.driveWithAuton(0.5, 3250);
+    m_driveTrain.driveWithAuton(0.5, 3500);
   }
 
   /** This function is called periodically during autonomous. */
