@@ -55,8 +55,8 @@ public class Robot extends TimedRobot {
     camera2.setFPS(15);
 
     // Get solenoids in starting position
-    m_johnathan.startPosition();
-    m_bBob.startPosition();
+    //m_johnathan.startPosition();
+    //m_bBob.startPosition();
   }
   
   /**
@@ -86,11 +86,10 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     
-    m_driveTrain.driveWithAuton(-0.5, 750);
+    m_balldump.autonBallDump(true, 600);
+    m_driveTrain.driveWithAuton(-0.55, 750);
+    m_balldump.autonBallDump(true, 650);
     m_driveTrain.stop();
-    //open ball mech
-    
-      m_balldump.autonBallDump(true, 1000);
 
     /*try {
       Thread.sleep(1000);
@@ -99,20 +98,20 @@ public class Robot extends TimedRobot {
    
     for(int i=0; i<3; i++)
     {
-      m_driveTrain.driveWithAuton(0.5, 250);
+      m_driveTrain.driveWithAuton(0.50, 250);
       m_driveTrain.stop();
-      m_driveTrain.driveWithAuton(-0.5, 250);
+      m_driveTrain.driveWithAuton(-0.50, 250);
     }
 
     m_driveTrain.stop();
     try {
-      Thread.sleep(3000);
+      Thread.sleep(1500);
     } catch (Exception e) {
     }
     
     m_driveTrain.driveWithAuton(0.5, 500);
     //close ball mech
-    m_balldump.autonBallDump(false, 1000);
+    m_balldump.autonBallDump(false, 1250);
     
     m_driveTrain.driveWithAuton(0.5, 3500);
   }
