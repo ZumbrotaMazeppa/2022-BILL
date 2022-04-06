@@ -14,7 +14,7 @@ public class Bob extends SubsystemBase{
     DoubleSolenoid verticalSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 6, 7); 
     DoubleSolenoid tipSolenoid = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0, 1);  
     WPI_VictorSPX m_Winch = new WPI_VictorSPX(5);
-    DigitalInput limitSwitch  = new DigitalInput(9 ); // update input num
+    DigitalInput limitSwitch  = new DigitalInput(9);
 
     public Bob(){
         
@@ -31,15 +31,6 @@ public class Bob extends SubsystemBase{
  
     public void xboxControlPneumatics(XboxController xboxControl)
     {
-        
-        //if(xboxControl.getRightBumper())
-     //   {
-    //        verticalSolenoid.set(DoubleSolenoid.Value.kReverse);
-    // }
-     // else if(xboxControl.getRightTriggerAxis()==1)
-     //  {
-    //     verticalSolenoid.set(DoubleSolenoid.Value.kForward);
-    //  }
 
         if (xboxControl.getRightTriggerAxis()==1 && xboxControl.getRightBumper()){
             m_Winch.set(0);
@@ -54,23 +45,20 @@ public class Bob extends SubsystemBase{
             m_Winch.set (-0.9);
         }
 
-
         while (xboxControl.getRightBumper()){
-            if(limitSwitch.get())
-            {
+            verticalSolenoid.set(DoubleSolenoid.Value.kReverse);
+            try {
+                Thread.sleep(200);
+            } catch (Exception e) {
+            }
+
+            // Naturally open config
+            if(limitSwitch.get()) { // not pushed
+                m_Winch.set(0.9);
+            } else {
                 m_Winch.set(0.0);
             }
-            else
-            {
-                verticalSolenoid.set(DoubleSolenoid.Value.kReverse);
-                try {
-                    Thread.sleep(200);
-                } catch (Exception e) {
-                }
-                m_Winch.set(0.9);
-            }
         }
-
 
         if(xboxControl.getLeftBumper())
         {

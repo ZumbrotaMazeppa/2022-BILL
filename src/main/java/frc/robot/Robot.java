@@ -97,13 +97,16 @@ public class Robot extends TimedRobot {
     } catch (Exception e) {
     }*/
    
-    m_driveTrain.driveWithAuton(0.5, 250);
-    m_driveTrain.stop();
-    m_driveTrain.driveWithAuton(-0.5, 250);
+    for(int i=0; i<3; i++)
+    {
+      m_driveTrain.driveWithAuton(0.5, 250);
+      m_driveTrain.stop();
+      m_driveTrain.driveWithAuton(-0.5, 250);
+    }
 
     m_driveTrain.stop();
     try {
-      Thread.sleep(4000);
+      Thread.sleep(3000);
     } catch (Exception e) {
     }
     
